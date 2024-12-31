@@ -1,17 +1,18 @@
 'use client';
 
-import Link from 'next/link'
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Github, Linkedin, Twitter } from 'lucide-react'
-import { UserCard } from "../components/user-card"
+import Link from 'next/link';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Github, Linkedin, Twitter } from 'lucide-react';
+import { UserCard } from "../components/user-card";
+import { User } from "@/app/actions/schemas";
 
 // Fetch users function
-async function fetchUsers() {
+async function fetchUsers(): Promise<User[]> {
   // Replace this with your API/database fetch logic
   return [
-    { id: "1", name: "Alice", phoneNumber: "123-456-7890", email: "alice@example.com", location: "New York" },
-    { id: "2", name: "Bob", phoneNumber: "987-654-3210", email: "bob@example.com", location: "San Francisco" },
+    { id: "1", name: "Alice", phoneNumber: "123-456-7890", email: "alice@example.com"},
+    { id: "2", name: "Bob", phoneNumber: "987-654-3210", email: "bob@example.com"},
   ];
 }
 
@@ -82,7 +83,7 @@ export default async function Page() {
         <h2 className="text-2xl font-bold mb-6">User List</h2>
         <div className="grid gap-6">
           {users.map((user) => (
-            <UserCard key={user.id} user={user} />
+            <UserCard key={user.id} user={user} onDelete={() => {}} />
           ))}
         </div>
 
